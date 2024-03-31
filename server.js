@@ -1,15 +1,16 @@
+const dotenv = require("dotenv");
+dotenv.config();
 const http = require("http");
 const mongodb = require("mongodb");
 
-let db;
-const connectionString =
-  "mongodb+srv://todouser:todo14@cluster0.b91ez.mongodb.net/Papays?authSource=admin&replicaSet=atlas-1371sn-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true";
+
+const connectionString = process.env.MONGO_URL;
 
 mongodb.connect(
   connectionString,
-  {
+  {    
     useNewUrlParser: true,
-    useUnifiedTopology: true,
+    useUnifiedTopology: true,    
   },
   (err, client) => {
     if (err) console.log("ERROR on connection MongoDB");
@@ -19,12 +20,12 @@ mongodb.connect(
 
       const app = require("./app");
       const server = http.createServer(app);
-      let PORT = 3003;
+      let PORT = process.env.PORT || 7007;   
       server.listen(PORT, function () {
         console.log(
           `The server is running successfully on port: ${PORT}, http://localhost:${PORT}`
         );
       });
-    }
+    }   
   }
-);
+);   
