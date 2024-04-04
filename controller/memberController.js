@@ -12,7 +12,7 @@ memberController.home = (req, res) => {
 //   console.log("POST cont.signup");
 //   res.send("signup sahifadasiz");
 // };    
-        
+             
 memberController.signup = async (req, res) => {
   try{
   console.log("POST:cont/signup");
@@ -20,7 +20,8 @@ memberController.signup = async (req, res) => {
   console.log(`body:::`,data);
   const member = new Member();
   const new_member = await member.signupData(data);
-
+  console.log("new_member111::",new_member);
+       
   res.send("done");
   } catch(err) {
   console.log(`ERROR, cont/signup, ${err.message}`);

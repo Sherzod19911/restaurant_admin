@@ -3,7 +3,7 @@ const {
    member_type_enums,
     member_status_enums, 
     ordinary_enums
-  } = require("../lib/config");
+  } = require("../lib/config");  
 
 const memberSchema = new mongoose.Schema({
   mb_nick: {
