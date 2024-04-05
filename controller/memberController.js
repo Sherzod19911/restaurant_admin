@@ -14,7 +14,7 @@ memberController.home = (req, res) => {
 // };    
              
 memberController.signup = async (req, res) => {
-  try{
+  try{     
   console.log("POST:cont/signup");
   const data = req.body; //requestni badiy qismidan malumot olamiz.
   console.log(`body:::`,data);
@@ -22,7 +22,7 @@ memberController.signup = async (req, res) => {
    new_member = await member.signupData(data);
 
    res.json({state: "succeed", data:new_member}); 
-  // res.send("done");
+   
   } catch(err) {
     res.json({state: 'fail',message: err.message});
   }
