@@ -2,6 +2,7 @@ console.log("Web Serverni boshlash");
 const express = require("express");
 const app = express();
 const router = require("./rooter");
+const router_bssr = require("./router_bssr.js");
 
 
 
@@ -19,5 +20,7 @@ app.set("view engine", "ejs");
 // 4 Routing code
 app.use("/", router);
 //app.use("/resto",router_bssr);
+app.use("/resto",router_bssr);
+app.use("/", router_bssr);
 
 module.exports = app;
