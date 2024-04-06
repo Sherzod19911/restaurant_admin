@@ -82,7 +82,7 @@ restaurantController.validateAuthRestaurant = (req, res, next) => {
   } else
    res.json({
     state: "fail",
-     Error: "only authenticated memebers with restaurant type"
+     message: "only authenticated memebers with restaurant type"
     });
 };
 
