@@ -11,7 +11,7 @@ memberController.home = (req, res) => {
 // memberController.signup = (req, res) => {
 //   console.log("POST cont.signup");
 //   res.send("signup sahifadasiz");
-// };    
+// };                 
              
 memberController.signup = async (req, res) => {
   try{     
