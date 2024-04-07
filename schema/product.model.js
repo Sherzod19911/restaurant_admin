@@ -3,6 +3,7 @@ const {
     product_collection_enums, 
     product_status_enums,
     product_size_enums,
+    product_volume_enums
 } = require("../lib/config");
 const Schema = mongoose.Schema;
 
@@ -40,15 +41,16 @@ const  productSchema =new mongoose.Schema({
   },
   product_size: {
     type: String,
-    default: "normal",
+    default: "normal",     
     required: function() {
         const sized_list = ["dish","salad", "dessert"];
         return sized_list.includes (this.product_collection);
     },
     enum: {
-        values: product_size_enums,
-        message: "{VALUE} is not among permitted enum  values}",
-    }
+      values: product_size_enums,
+      message: "{VALUE}, is not among permitted enum values",
+    },
+    
   },
 
 
@@ -75,22 +77,21 @@ const  productSchema =new mongoose.Schema({
    product_likes: {
     type: Number,
     required: false,
-    default: 0,
+    default: 0
    },
    product_views: {
     type: Number,
     required: false,
     default: 0
    },
-   restaurant_member_id: {
-    type: Schema.Types.objectId,
+   restaurant_mb_id: {
+    type: Schema.Types.ObjectId,
     ref: "Member",
     required: false,
-   },
-},{timestamps: true});
-
-productSchema.index({restaurant_mb_id: 1, product_name: 1, product_size: 1, product_volume: 1},
-    {unique: true} //texas-De-Brazilcoca-cola
-    );
-
-    module.exports = mongoose.model("Product", productSchema);
+  }
+},{timestamps: true}
+);
+productSchema.index({restaurant_mb_id: 1,product_name: 1, product_size: 1, product_volume: 1}, 
+{unique: true}
+);
+module.exports = mongoose.model("Product", productSchema);
