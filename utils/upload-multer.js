@@ -40,7 +40,7 @@ function getTargetImageStorage(address) {
             const random_name = uuid.v4() + extension;
             cb(null, random_name);
         }
-    });
+    });   
 }
 
 const makeUploader = (address) => {
