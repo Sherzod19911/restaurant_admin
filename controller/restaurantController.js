@@ -1,18 +1,18 @@
-const assert = require("assert");
+
 const Member = require("../models/Member");
 
 const Product = require("../models/Product");
-const Definer = require("../lib/mistake");
+const assert = require("assert");    
 
 let restaurantController = module.exports;
 
 restaurantController.home = (req, res) => {
   try {  
   console.log('GET: cont/home');
-  res.render('home-page');
+  res.render("home-pag");
   } catch(err) {
      console.log(`ERROR, cont/home, ${err.message}`)
-     res.json({state: 'fail', message: err.message});
+     res.json({state: "fail", message: err.message});
   }      
   }                       
   
@@ -34,31 +34,30 @@ restaurantController.getMyRestaurantProducts = async (req, res) => {
 
 restaurantController.getSignupMyRestaurant = async (req, res) => {
   try{
-    console.log('GET: cont/getSignupMyRestaurant')
+    console.log(`GET: cont/getSignupMyRestaurant`)
     res.render("signup");
 
   } catch(err) {
     console.log(`ERROR, cont/getSignupMyRestaurant, ${err.message}`)
-    res.json({state: 'fail', message: err.message})
+    res.json({state: "fail", message: err.message})
   }
 }
 
-restaurantController.signupProcess = async (req,res) => {
-  try{
-   
-    console.log('POST: cont/signupProcess');
-    console.log("file:", req.file);
+restaurantController.signupProcess = async (req, res) => {
+  try {
+    console.log(`POST: cont/signup`);
 
     assert(req.file, Definer.general_err3);
 
-    
-    let new_member = req.body;
-    new_member.mb_type = 'RESTAURANT';
+    assert.ok(req.file, Definer.general_err3);
+
+    let new_member = req.body;    
+    new_member.mb_type = "RESTAURANT";
     new_member.mb_image = req.file.path;
 
     const member = new Member();
     const result = await member.signupData(new_member);
-    assert(req.file, Definer.general_err3);
+    assert.ok(result, Definer.general_err1);
 
 
     req.session.member = result;
@@ -66,17 +65,17 @@ restaurantController.signupProcess = async (req,res) => {
 
   } catch(err) {
     console.log(`ERROR, cont/signup, ${err.message}`)
-    res.json({state: 'fail', message: err.message})
+    res.json({state: "fail", message: err.message})
   } 
 }
 
 restaurantController.getLoginMyRestaurant = async (req, res) => {
   try{
     console.log("GET: cont/getLoginMyRestaurant");
-    res.render('login-page');
+    res.render("login-page");
   } catch(err) {
     console.log(`ERROR, cont/getLoginMyRestaurant, ${err.message}`)
-    res.json({state: 'fail', message: err.message})
+    res.json({state: "fail", message: err.message})
   }
 }
 
@@ -96,8 +95,8 @@ restaurantController.loginProcess = async (req,res) => {
     });
 
   } catch(err) {
-    console.log(`ERROR, cont/login, ${err.message}`);
-    res.json({state: 'fail', message: err.message});
+    console.log(`ERROR, cont/loginProcess, ${err.message}`);
+    res.json({state: "fail", message: err.message});
   } ;  
 }
 
