@@ -70,6 +70,11 @@ productController.addNewProduct = async (req, res) => {
         const result = await product.addNewProductData(data, req.member);
         if (!result) {
             throw new Error(Definer.product_err1);
+            const html = `<script>
+                        alert("new dusg added successfully");
+                        window.location.replace("/resto/products/menu");
+                      </script>`;
+        res.end(html);
         }
 
         // Redirect to a page after successful product addition
