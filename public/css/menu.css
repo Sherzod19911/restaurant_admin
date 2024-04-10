@@ -1,38 +1,34 @@
 .restaurant_menu_frame {
-    position: relative;
-    padding-bottom: 80px;
-    width: 100%;
-    height: auto;
+  position: relative;
+  padding-bottom: 80px;
+  width: 100%;
+  height: auto;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 80px;
-    background: #2c261e;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #2c261e;
 }
+
 .restaurant_menu_frame .restaurant_container {
-    position: relative;
-    margin-top: 100px;
-    width: 1320px;
-    height: auto;
+  position: relative;
+  margin-top: 100px;
+  width: 1320px;
+  height: auto;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 100px;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.restaurant_container .dish_table {
-    position: relative;
-    width: 100%;
-    height: auto;
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 30px;
+.restaurant_container .dishs_table {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .restaurant_container .resto_table {
@@ -97,7 +93,7 @@ input:checked + .slider:before {
 }
 
 /* Rounded sliders */
- .slider.round {
+.slider.round {
   border-radius: 34px;
 }
 
@@ -106,28 +102,29 @@ input:checked + .slider:before {
 }
 
 .spec_select {
-    position: relative;
-    padding: 0px  7px;
-    height: 27px;
-    background: #ffffff;
-    border: 1px solid #dddddd;
-    border-radius: 8px;
-    font-family: "GT Walshein Pro";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 26px;
-    color: #4f547b;
+  position: relative;
+  padding: 0px 7px;
+  /*width: 100%;*/
+  height: 27px;
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  font-family: "GT Walsheim Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 26px;
+  color: #4f547b;
 }
-
 .restaurant_container .dish_container {
-    position: relative;
-    margin-top: 20px;
-    width: 100%;
-    height: auto;
-    display: block;
-    flex-direction: column;
-    align-items: center;
+  position: relative;
+  margin-top: 20px;
+  width: 100%;
+  height: auto;
+
+  display: none;
+  flex-direction: column;
+  align-items: center;
 }
 
 .long_input {
@@ -141,13 +138,20 @@ input:checked + .slider:before {
 
 .new_dish_txt {
   font-family: "Source Serif Pro";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 30px;
-    line-height: 25px;
-    color: #ffffff;
-    margin-bottom: 30px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 25px;
+  color: #ffffff;
+}
 
+.long_input {
+  position: relative;
+  margin-top: 25px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .long_input label {
@@ -171,7 +175,7 @@ input:checked + .slider:before {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
 
-  font-family: "GT Walshein Pro";
+  font-family: "GT Walsheim Pro";
   font-style: normal;
   font-weight: 400;
   font-size: 15px;
@@ -179,7 +183,7 @@ input:checked + .slider:before {
   color: #4f547b;
 }
 
-.long_input_frame {
+.login_input_frame {
   position: relative;
   width: 100%;
   height: auto;
@@ -188,45 +192,44 @@ input:checked + .slider:before {
 }
 
 .dish_container .half_input_frame {
-    position: relative;
-    margin-top: 25px;
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
+  position: relative;
+  margin-top: 25px;
+  width: 100%;
+  height: auto;
 
-  .half_input_frame .half_input {
-    position: relative;
-    width: 49%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
-  
+
+.half_input_frame .half_input {
+  position: relative;
+  width: 49%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
 .half_input label {
   font-family: "Source Serif Pro";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 25px;
-    color: #ffffff;
-  }
-  
-  .half_input input {
-    position: relative;
-    margin-top: 10px;
-    padding-left: 20px;
-    width: 100%;
-    height: 54px;
-    border: none;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 25px;
+  color: #ffffff;
+}
 
+.half_input input {
+  position: relative;
+  margin-top: 10px;
+  padding-left: 20px;
+  width: 100%;
+  height: 54px;
+  border: none;
 
-    background: #f7f7f7;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-
+  background: #f7f7f7;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
 }
 
 .half_input select {
@@ -235,18 +238,18 @@ input:checked + .slider:before {
   padding: 0px 20px;
   width: 100%;
   height: 55px;
-  border: none;
   display: flex;
+  border: none;
   background: #f7f7f7;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
 
-  font-family: "GT Walshein Pro";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 26px;
-    color: #4f547b;
+  font-family: "GT Walsheim Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 26px;
+  color: #4f547b;
 }
 
 .long_input textarea {
@@ -256,12 +259,12 @@ input:checked + .slider:before {
   width: 100%;
   height: 200px;
   border: none;
-  display: flex;
+
   background: #f7f7f7;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
 
-  font-family: "GT Walshein Pro";
+  font-family: "GT Walsheim Pro";
   font-style: normal;
   font-weight: 400;
   font-size: 15px;
@@ -301,12 +304,12 @@ input:checked + .slider:before {
   position: relative;
   width: 19%;
   height: 100%;
+
   display: flex;
 justify-content: center;
 align-items: center;
 border-radius: 10px;
-border: 1px solid dodgerblue;
-  background: white; 
+
  cursor: pointer;
 } 
 
