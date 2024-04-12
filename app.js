@@ -42,9 +42,7 @@ app.set("views", "views");
 app.set("view engine", "ejs");
 
 // 4 Routing code
+app.use("/resto", router_bssr);
 app.use("/", router);
-//app.use("/resto",router_bssr);
-app.use("/resto",router_bssr);
-app.use("/", router_bssr);
 
 module.exports = app;
