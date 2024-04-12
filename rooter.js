@@ -4,7 +4,7 @@ const memberController = require("./controller/memberController");
 
 //memberga dahildor routerlar
 router.get("/", memberController.home);
-router.post("/signup", memberController.signup);
+router.post("/sign-up", memberController.signup);
 router.post("/login", memberController.login);
 router.get("/logout", memberController.logout);
 router.get("/check-me",memberController.checkMyAuthentication);

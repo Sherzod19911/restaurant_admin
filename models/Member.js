@@ -44,7 +44,7 @@ async signupData(input) {
       {mb_nick:1,mb_password: 1}
       )
      .exec();
-     assert.ok(member,Definer.auth_err3);
+     assert.ok(member,Definer.auth_err1);
      //console.log(member);
       // const isMatch = input.mb_password===member.mb_password;
       const isMatch = await bcrypt.compare(input.mb_password, member.mb_password);
