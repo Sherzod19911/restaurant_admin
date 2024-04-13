@@ -123,7 +123,7 @@ memberController.getChosenMember = async (req, res) => {
 
  memberController.retrieveAuthMember = (req, res, next) => {
   try {
-    const token = res.cookies["access_token"];
+    const token = req.cookies["access_token"];
     req.member = token ? jwt.verify(token, process.env.SECRET_TOKEN) : null;
     next();
 
