@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const memberController = require("./controller/memberController");
+const productController = require("./controller/productController");
 
 //memberga dahildor routerlar
 router.get("/", memberController.home);
@@ -13,13 +14,10 @@ memberController.retrieveAuthMember,
 memberController.getChosenMember
 );
 
-router.get("/menu", (req, res) => {
-  res.send("Menu sahifadasiz");
-});
-
-router.get("/community", (req, res) => {
-  res.send("Jamiyat sahifadasiz");
-});
+// product related routers    
+router.post("/products", 
+memberController.retrieveAuthMember,
+productController.getAllProducts);
       
 module.exports = router;
 

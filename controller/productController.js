@@ -8,6 +8,9 @@ const Definer =  require("../lib/mistake");
 productController.getAllProducts = async(req,res) => {
     try {
         console.log('GET: cont/getAllProducts');
+        const product = new Product();
+        const results = await product.getAllProductsData(req.member, req.body);
+        res.json ({ state: "success", data: results });
 
     }catch(err) {
         console.log(`ERROR, cont/getAllProducts, ${err.message}`);
@@ -15,39 +18,10 @@ productController.getAllProducts = async(req,res) => {
     }
 };
 
-// productController.addNewProduct = async(req,res) => {
-//     try {
-     
-//         console.log("POST: cont/addNewProduct");
-//         assert(req.files, Definer.general_err3);
 
-//         const product = new Product();
-//         let data = req.body;
-
-//         data.product_images = req.files.map((ele) => {
-//             return ele.path;
-//         });
-
-//         const result = await product.addNewProductData(data, req.member);
-//         assert.ok(result, Definer.product_err1)
-
-//         const html = `<script>
-//                        alert(new dusg added successfully);
-//                        window.location.replace("/resto/products/menu");
-//                      </script>`;
-//         res.end(html);
-
-//        // console.log(data);
-//         //res.send('ok');
-//         //TODO:product creation develop 
-
-
-//         }catch(err) {
-//         console.log(`ERROR, cont/addNewProduct, ${err.message}`);
-//    // res.json({state: 'fail', message: err.message}) nima uchun res json bn qaytarish q\xato  degansiz
-//     }
-// };
-
+/********************************************************
+ * BSSR RELATED METHOD
+ ******************************************************/
 
 productController.addNewProduct = async (req, res) => {
     try {
