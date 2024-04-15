@@ -101,7 +101,8 @@ async signupData(input) {
  
  
        //logged user hass seen target before
-       const doesExist = await view.checkViewExistence(view_ref_id, group_type);
+
+       const doesExist = await view.checkViewExistence(view_ref_id);       
        //console.log("doesExist:", doesExist);
  
        if(!doesExist) {
