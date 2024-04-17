@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const memberController = require("./controller/memberController");
 const productController = require("./controller/productController");
+const restaurantController = require("./controller/restaurantController");
 
 //memberga dahildor routerlar
 router.get("/", memberController.home);
@@ -25,6 +26,11 @@ router.get(
     "/products/:id",
     memberController.retrieveAuthMember,
     productController.getChosenProduct
+  );
+  router.get(
+    "/restaurants",
+    memberController.retrieveAuthMember,
+    restaurantController.getRestaurants
   );
       
 module.exports = router;
