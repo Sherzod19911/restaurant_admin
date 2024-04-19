@@ -15,7 +15,7 @@ class Restaurant {
       const auth_mb_id = shapeIntoMongooseObjectId(member?._id);
       let match = { mb_type: "RESTAURANT", mb_status: "ACTIVE" };
       let aggregationQuery = [];
-      data.limit = data["limit"] * 1;
+      data.limit = data["limit"] * 1;   
       data.page = data["page"] * 1;
 
       switch (data.order) {
@@ -47,6 +47,29 @@ class Restaurant {
       throw err;
     }
   }
+
+  async getChosenRestaurantData(member, id) {
+    try {
+      id = shapeIntoMongooseObjectId(id);
+
+      if (member) {
+        const member_obj = new Member();
+        await member_obj.viewChosenItemByMember(member, id, "member");
+      }
+
+      const result = await this.memberModel
+        .findOne({
+          _id: id,
+          mb_status: "ACTIVE",
+        })
+        .exec();
+      assert.ok(result, Definer.general_err2);
+      return result;
+    } catch (err) {
+      throw err;
+    }
+  }
+
 
   async getAllRestaurantsData() {
     try {

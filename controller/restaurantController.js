@@ -2,7 +2,8 @@
 const Member = require("../models/Member");
 const Product = require("../models/Product");
 const assert = require("assert");
-const Restaurant = require("../models/Restaurant");   
+const Restaurant = require("../models/Restaurant");  
+const Definer = require("../lib/mistake") 
 
 let restaurantController = module.exports;
 
@@ -53,18 +54,30 @@ restaurantController.home = (req, res) => {
 
 
 
+// restaurantController.getMyRestaurantProducts = async (req, res) => {
+//   try{
+//     console.log('GET: cont/getMyRestaurantProducts')
+//     //TODO: Get my restaurant products
+//     const product = new Product();
+//     const data = await product.getAllProductsDataResto(res.locals.member);
+//     res.render("restaurant-menu", {restaurant_data: data});
+//   } catch(err) {
+//     console.log(`ERROR, cont/getMyRestaurantData, ${err.message}`)
+//     res.redirect("/resto");
+//   }
+// }
+
 restaurantController.getMyRestaurantProducts = async (req, res) => {
-  try{
-    console.log('GET: cont/getMyRestaurantProducts')
-    //TODO: Get my restaurant products
+  try {
+    console.log("GET: cont/getMyRestaurantProducts");
     const product = new Product();
     const data = await product.getAllProductsDataResto(res.locals.member);
-    res.render("restaurant-menu", {restaurant_data: data});
-  } catch(err) {
-    console.log(`ERROR, cont/getMyRestaurantData, ${err.message}`)
+    res.render("restaurant-menu", { restaurant_data: data });
+  } catch (err) {
+    console.log(`ERROR, cont/getMyRestaurantProducts, ${err.message}`);
     res.redirect("/resto");
   }
-}
+};
 
 restaurantController.getSignupMyRestaurant = async (req, res) => {
   try{
