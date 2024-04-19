@@ -3,6 +3,7 @@ const router = express.Router();
 const memberController = require("./controller/memberController");
 const productController = require("./controller/productController");
 const restaurantController = require("./controller/restaurantController");
+const orderController = require("./controller/orderController");
 
 //memberga dahildor routerlar
 router.get("/", memberController.home);
@@ -38,6 +39,13 @@ router.get(
     memberController.retrieveAuthMember,
     restaurantController.getChosenRestaurant
   );
+
+  //order related "routers"
+
+router.post("/orders/create",  
+memberController.retrieveAuthMember, 
+orderController.createOrder
+);
       
 module.exports = router;
 
