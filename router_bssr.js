@@ -1,7 +1,7 @@
 const express = require("express");
 const router_bssr = express.Router();
-const restaurantController = require("./controller/restaurantController");
-const productController = require("./controller/productController");
+const restaurantController = require("./controllers/restaurantController");
+const productController = require("./controllers/productController");
 const  uploader_product = require("./utils/upload-multer")("products");
 const  uploader_members = require("./utils/upload-multer")("members");
 
