@@ -1,4 +1,4 @@
-<%- include("includes/header")%>
+<!-- <%- include("includes/header")%>
 
 <link rel="stylesheet" type="text/css" href="/css/home.css" />
 
@@ -214,4 +214,56 @@ let breathAnimation = anime({
   </script>
 </body>
 
-<%- include("includes/footer")%>
+<%- include("includes/footer")%> -->
+
+
+<%- include("includes/header") %>
+
+<link rel="stylesheet" type="text/css" href="/css/home.css">
+
+<body>
+  <div class="group_name">
+    <ul class="nav justify-content-center">
+      <li class="nav-item" style="cursor: pointer">
+        <a class="nav-link active" href="/resto">Home</a>
+      </li>
+
+      <% if (!member) { %>
+        <li class="nav-item" style="cursor: pointer">
+          <a class="nav-link active" href="/resto/sign-up">Signup</a>
+        </li>
+        <li class="nav-item" style="cursor: pointer">
+          <a class="nav-link active" href="/resto/login">Login</a>
+        </li>
+      <% } else if (member.mb_type === 'ADMIN') { %>
+        <li class="nav-item" style="cursor: pointer">
+          <a class="nav-link active" href="/resto/all-restaurant">AllResto</a>
+        </li>
+        <li class="nav-item" style="cursor: pointer">
+          <a class="nav-link active" href="/resto/logout" onclick="return confirm('Do you want to logout?')">Logout</a>
+        </li>
+      <% } else { %>
+        <li class="nav-item" style="cursor: pointer">
+          <a class="nav-link active" href="/resto/products/menu">MyResto</a>
+        </li>
+        <li class="nav-item" style="cursor: pointer">
+          <a class="nav-link active" href="/resto/logout" onclick="return confirm('Do you want to logout?')">Logout</a>
+        </li>
+      <% } %>
+    </ul>
+  </div>
+
+  <div class="animation-wrapper">
+    <div class="sphere-animation">
+      <svg class="sphere" viewBox="0 0 440 440" stroke="rgba(80,80,80,.35)">
+        <!-- Your SVG paths -->
+      </svg>
+    </div>
+  </div>
+
+  <script>
+    // Your JavaScript code
+  </script>
+</body>
+
+<%- include("includes/footer") %>
