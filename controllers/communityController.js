@@ -2,6 +2,7 @@ let communityController = module.exports;
 const assert = require("assert");
 const Definer = require("../lib/mistake");
 const Community = require("../models/Community");
+const { query } = require("express");
 
 communityController.imageInsertion = async ( res, req ) => {
     try {
@@ -59,4 +60,24 @@ communityController.getMemberArticles = async (req, res) => {
         res.json({state: 'fail', message: err.message});
 
 }
+};
+
+
+communityController.getArticles = async (req, res) => {
+    try {
+    console.log("GET: cont/getArticles");
+    console.log("query::", query);
+    const community = new Community();
+    const result = await community.getArticlesData(req.member, req.query);
+    console.log("req.member::",req.member);
+    console.log("req.quiry::",req.query);
+    console.log("result:::",result);
+    res.json({state: 'success', data: result });
+    }catch(err) {
+     console.log(`ERROR: cont/getArticles, ${err.message}`); 
+     res.json({state: 'fail', message: err.message});
+
+    }
+
+
 };
