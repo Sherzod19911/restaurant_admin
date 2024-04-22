@@ -8,6 +8,8 @@ const communityController = require("./controllers/communityController");
 const uploader_member = require("./utils/upload-multer")("members");
 const uploader_community = require("./utils/upload-multer")("community");
 
+const followController = require("./controllers/followController");
+
 //memberga dahildor routerlar
 router.get("/", memberController.home);
 router.post("/signup", memberController.signup);
@@ -88,7 +90,18 @@ router.post(
     memberController.retrieveAuthMember,
     communityController.getArticles
 );
-      
+  
+router.get(
+  "/community/single-article/:art_id",
+  memberController.retrieveAuthMember,
+  communityController.getChosenArticle
+);
+
+
+router.post("/follow/subscribe",
+memberController.retrieveAuthMember,
+followController.subscribe
+); 
 module.exports = router;
 
 

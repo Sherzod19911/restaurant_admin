@@ -4,6 +4,7 @@ const Definer = require("../lib/mistake");
 const Community = require("../models/Community");
 const { query } = require("express");
 
+
 communityController.imageInsertion = async ( res, req ) => {
     try {
         console.log(`POST: cont/imageInsertion`);
@@ -78,6 +79,23 @@ communityController.getArticles = async (req, res) => {
      res.json({state: 'fail', message: err.message});
 
     }
-
-
 };
+
+communityController.getChosenArticle = async (req, res) => {
+    try{
+        console.log("GET: cont/getChosenArticle");
+
+        const art_id = req.params.art_id;
+        // console.log("ART_ID:::", art_id);
+        // console.log("req.PARAMS:::",  req.params);
+
+        const community = new Community();
+        const result = await community.getChosenArticleData(req.member, art_id);
+
+        res.json({state: 'success', data: result});
+    } catch(err) {
+        console.log(`ERROR: cont/getChosenArticle, ${err.message}`); 
+     res.json({state: 'fail', message: err.message});
+
+    }
+}

@@ -1,6 +1,7 @@
 const MemberModel = require("../schema/member.model");
 const ViewModel = require("../schema/view.model");
 const ProductModel = require("../schema/product.model");
+const BoArticleModel = require("../schema/bo_article.model");
 
 
     class View {
@@ -17,32 +18,40 @@ const ProductModel = require("../schema/product.model");
             let result;
 
             switch(group_type) {
-                case 'member':
-                result = await this.memberModel.findById({
+                case "member":
+                  result = await this.memberModel.findOne({
                     _id: view_ref_id, 
                     mb_status: "ACTIVE",
             }).exec();
             break;
-            break;  
+             
             case "product":
               result = await this.productModel
-                .findById({
+              .findOne({
                   _id: view_ref_id,
                   product_status: "PROCESS",
                 })
                 .exec();
               break;  
-              
-            case "product":
-              await this.productModel
-                .findByIdAndUpdate(
-                  {
+              case "community":
+                result = await this.boArticleModel
+                  .findOne({
                     _id: view_ref_id,
-                  },
-                  { $inc: { product_views: 1 } }
-                )
-                .exec();
-              break;
+                    art_status: "active",
+                  })
+                  .exec();
+                break;  
+              
+            // case "product":
+            //   await this.productModel
+            //     .findByIdAndUpdate(
+            //       {
+            //         _id: view_ref_id,
+            //       },
+            //       { $inc: { product_views: 1 } }
+            //     )
+            //     .exec();
+            //   break;
     
             }   
             return !!result;         
@@ -84,6 +93,26 @@ const ProductModel = require("../schema/product.model");
                     _id: view_ref_id, 
                 }, 
                 { $inc: {mb_views: 1 } } 
+            )
+             .exec();
+            break;
+            case "product":
+                await this.productModel
+                .findByIdAndUpdate(
+                    {
+                    _id: view_ref_id, 
+                }, 
+                { $inc: {product_views: 1 } } 
+            )
+             .exec();
+            break;
+            case "community":
+                await this.boArticleModel
+                .findByIdAndUpdate(
+                    {
+                    _id: view_ref_id, 
+                }, 
+                { $inc: {art_views: 1 } } 
             )
              .exec();
             break;

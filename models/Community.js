@@ -2,6 +2,7 @@ const BoArticleModel = require("../schema/bo_article.model");
 const Definer = require("../lib/mistake");
 const assert = require("assert");
 const { shapeIntoMongooseObjectId, board_id_enum_list } = require("../lib/config");
+const Member = require("./Member");
 
 class Community {
     constructor(){
@@ -33,7 +34,7 @@ class Community {
     }
     async getMemberArticlesData(member, mb_id, inquery) {
         try{
-            const auth_mb_id = shapeIntoMongooseObjectId(member?._id);
+            const auth_mb_id = shapeIntoMongooseObjectId(member._id);
 			mb_id = shapeIntoMongooseObjectId(mb_id);
 			const page = inquery['page'] ? inquery['page'] * 1 : 1;
 			const limit = inquery['limit'] ? inquery['limit'] * 1 : 5;
@@ -112,6 +113,32 @@ class Community {
 
         }
     }
+   
+    async getChosenArticleData(member, art_id) {
+        try {
+            art_id = shapeIntoMongooseObjectId(art_id);
+
+            if (member) {
+
+                const member_obj = new Member();
+                await member_obj.viewChosenItemByMember(
+                    member,
+                    art_id,
+                    "community"
+                );
+            }
+
+            const result = await this.boArticleModel
+                .findById({ _id: art_id })
+                .exec();
+            assert.ok(result, Definer.article_err3);
+
+            return result;
+        } catch (err) {
+            throw err;
+        }
+    }
+
 
    
 }

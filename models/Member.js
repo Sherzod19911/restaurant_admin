@@ -94,6 +94,7 @@ async signupData(input) {
        //valitation needed
  
        const isValid = await view.validateChosenTarget(view_ref_id, group_type);
+       console.log("is valid::",isValid);
        assert.ok(isValid, Definer.general_err2);
  
  
@@ -103,7 +104,7 @@ async signupData(input) {
        //logged user hass seen target before
 
        const doesExist = await view.checkViewExistence(view_ref_id);       
-       //console.log("doesExist:", doesExist);
+       console.log("doesExist:", doesExist);
  
        if(!doesExist) {
        const result = await view.insertMemberView(view_ref_id, group_type);

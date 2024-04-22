@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-const { member_type_enums, member_status_enums, ordinary_enums, board_id_enum_list, board_article_status_enum_list} = require("../lib/config");
+const { board_id_enum_list, board_article_status_enum_list} = require("../lib/config");
+
 const Schema = mongoose.Schema;
 
 const boArticleSchema = new mongoose.Schema(
