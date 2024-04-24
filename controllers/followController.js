@@ -1,4 +1,5 @@
 let followController = module.exports;
+const Follow = require("../models/Follow")
 
 
 const Definer = require("../lib/mistake");
@@ -7,12 +8,13 @@ const assert = require("assert");
 
 followController.subscribe = async (req, res) => {
     try {
+        console.log("1991");
+
         console.log("POST: cont/subscribe");
         assert.ok(req.member, Definer.auth_err5);
-
+       
         const follow = new Follow();
         await follow.subscribeData(req.member, req.body);
-
         res.json({ state: "success", data: "subscribed" });
 
 
@@ -38,3 +40,16 @@ followController.unsubscribe = async (req, res) => {
    
     }
    }
+   followController.getMemberFollowings = async (req, res) => {
+    try {
+        console.log("POST: cont/getMemberFollowings");  
+        const follow = new Follow();
+        const result = await follow.getMemberFollowingsData(req.query);
+        res.json({ state: "success", data: result });
+
+
+    }catch(err) {
+        console.log(`ERROR: cont/getMemberFollowings, ${err.message}`); 
+        res.json({state: 'fail', message: err.message});
+    }
+}
