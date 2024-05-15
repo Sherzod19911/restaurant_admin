@@ -135,7 +135,7 @@ restaurantController.getLoginMyRestaurant = async (req, res) => {
 restaurantController.loginProcess = async (req,res) => {
   try{
     console.log("POST: cont/loginProcess")
-    const data = req.body;
+    const data = req.body;     
     //console.log("dat:", data);
     const member = new Member();
     const result = await member.loginData(data);
@@ -207,8 +207,9 @@ restaurantController.getAllRestaurants = async (req, res) => {
     const restaurants_data = await restaurant.getAllRestaurantsData();
     console.log("restaurants_data:", restaurants_data);
 
+    res.render("all-restaurants", { restaurants_data: restaurants_data });
 
-    res.render("all-restaurants",{ restaurants_data: restaurants_data });
+    // res.render("all-restaurants",{ restaurants_data: restaurants_data });
   } catch (err) {
     console.log(`ERROR, cont/getAllRestaurants, ${err.message}`);
     res.json({ state: "fail", message: err.message });
